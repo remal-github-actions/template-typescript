@@ -21,6 +21,10 @@
     ],
   },
 
+  lockFileMaintenance: {
+    enabled: true,
+  },
+
   // $$$sync-with-template-modifiable: local $$$
   // $$$sync-with-template-modifiable-end$$$
 }
