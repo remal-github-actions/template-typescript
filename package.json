@@ -5,6 +5,7 @@
   "engines": {
     "node": ">=16"
   },
+  "packageManager": "yarn@3.6.0",
   "main": "dist/main.js",
   "scripts": {
     "lint": "eslint --fix",
@@ -12,7 +13,7 @@
     "tsconfig-generate-app": "node tsconfig-generate-app",
     "compile": "npm run lint && rimraf build && node tsconfig-generate-app && tsc -project tsconfig.app.json --rootDir src --outDir build",
     "dist": "npm run compile && rimraf dist && ncc build build/main.js --out dist",
-    "build": "npm run dist && npm run test"
+    "build": "node check-dependency-engines && npm run dist && npm run test"
   },
   "dependencies": {
     "@actions/core": "1.10.0",

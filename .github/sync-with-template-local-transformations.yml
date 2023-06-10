@@ -23,6 +23,13 @@ transformations:
         + [
             '',
             '# Remal GitHub actions:',
+            '/.pnp.*',
+            '/.yarn/*',
+            '!/.yarn/patches/',
+            '!/.yarn/plugins/',
+            '!/.yarn/releases/',
+            '!/.yarn/sdks/',
+            '!/.yarn/versions/',
             '/build',
             '/coverage',
             '',
@@ -67,10 +74,6 @@ transformations:
             extends: ["github>remal/renovate-config:disable-major-updates"],
           },
         ],
-      },
-
-      lockFileMaintenance: {
-        enabled: true,
       },
 
       // $$$sync-with-template-modifiable: local $$$
