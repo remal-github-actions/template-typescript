@@ -13,8 +13,8 @@ includes:
 - lombok.config
 - .eslint*
 - .prettier*
-- .yarn/**
 - .yarn*
+- .yarn/**
 - check-dependency-engines.js
 - update-node-version-in-files.js
 - tsconfig-generate-app.js
