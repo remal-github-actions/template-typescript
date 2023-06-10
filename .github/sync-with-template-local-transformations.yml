@@ -40,6 +40,7 @@ transformations:
   - .github/sync-with-template.yml
   script: |
     ;[
+      '.yarn/**',
       'check-dependency-engines.js',
       'update-node-version-in-files.js',
       'tsconfig-generate-app.js',
