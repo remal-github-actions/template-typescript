@@ -64,7 +64,7 @@ jobs:
     - name: Install dependencies
       if: steps.restore-node_modules-cache.outputs.cache-hit != 'true'
       run: |
-        yarn install
+        yarn install --no-immutable
         node check-dependency-engines
 
     - name: Save node_modules cache
