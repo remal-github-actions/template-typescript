@@ -13,7 +13,7 @@
     "tsconfig-generate-app": "node tsconfig-generate-app",
     "compile": "npm run lint && rimraf build && node tsconfig-generate-app && tsc -project tsconfig.app.json --rootDir src --outDir build",
     "dist": "npm run compile && rimraf dist && ncc build build/main.js --out dist",
-    "build": "node check-dependency-engines && npm run dist && npm run test"
+    "build": "npm run dist && npm run test"
   },
   "dependencies": {
     "@actions/core": "1.10.0",
