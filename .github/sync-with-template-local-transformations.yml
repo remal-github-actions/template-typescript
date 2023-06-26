@@ -63,7 +63,7 @@ transformations:
         enabled: false, // This is in beta for now, so let's use Dependabot to update Git submodules
       },
 
-      //constraintsFiltering: 'strict',
+      constraintsFiltering: 'strict',
       // $$$sync-with-template-modifiable: constraints $$$
       // $$$sync-with-template-modifiable-end$$$
 
