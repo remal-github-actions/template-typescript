@@ -64,6 +64,8 @@ transformations:
       },
 
       //constraintsFiltering: 'strict',
+      // $$$sync-with-template-modifiable: constraints $$$
+      // $$$sync-with-template-modifiable-end$$$
 
       node: {
         enabled: false,
