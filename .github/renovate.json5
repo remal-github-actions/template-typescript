@@ -8,6 +8,11 @@
 
   //constraintsFiltering: 'strict',
   // $$$sync-with-template-modifiable: constraints $$$
+  force: {
+    constraints: {
+      node: "^16.0.0",
+    },
+  },
   // $$$sync-with-template-modifiable-end$$$
 
   node: {
