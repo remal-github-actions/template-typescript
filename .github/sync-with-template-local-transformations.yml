@@ -67,13 +67,12 @@ transformations:
       // $$$sync-with-template-modifiable: constraints $$$
       // $$$sync-with-template-modifiable-end$$$
 
-      node: {
-        enabled: false,
-      },
-
       packageRules: [
         {
-          matchLanguages: ["js"],
+          "matchCategories": ["node"],
+          "enabled": false
+        },
+        {
           matchCategories: ["js"],
           matchPackageNames: ['@types/node'],
           extends: ["github>remal/renovate-config:disable-major-updates"],
