@@ -21,13 +21,13 @@ export function newOctokitInstance(token: string) {
 
     const throttleOptions = {
         throttle: {
-            onRateLimit: (retryAfter, options) => {
+            onRateLimit: (_, options) => {
                 const retryCount = options.request.retryCount
                 const retryLogInfo = retryCount === 0 ? '' : ` (retry #${retryCount})`
                 core.debug(`Request quota exhausted for request ${options.method} ${options.url}${retryLogInfo}`)
                 return retryCount <= 4
             },
-            onSecondaryRateLimit: (retryAfter, options) => {
+            onSecondaryRateLimit: (_, options) => {
                 core.error(`Abuse detected for request ${options.method} ${options.url}`)
                 return false // Don't repeat
             },
