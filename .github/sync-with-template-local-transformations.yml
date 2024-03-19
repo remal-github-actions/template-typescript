@@ -41,9 +41,9 @@ transformations:
   script: |
     ;[
       '.yarn/**',
-      'check-dependency-engines.js',
-      'update-node-version-in-files.js',
-      'tsconfig-generate-app.js',
+      'check-dependency-engines.*js',
+      'update-node-version-in-files.*js',
+      'tsconfig-generate-app.*js',
     ].forEach(path => {
       if (!content.includes.includes(path)) {
         content.includes.push(path)

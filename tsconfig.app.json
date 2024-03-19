@@ -6,6 +6,8 @@
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": false,
+    "module": "ESNext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "removeComments": true,
     "types": [
@@ -14,7 +16,10 @@
   },
   "include": [
     "global.d.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.cts",
+    "src/**/*.mts"
   ],
   "exclude": [
     "**/*.spec.*"
