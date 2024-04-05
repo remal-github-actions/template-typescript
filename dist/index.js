@@ -2867,7 +2867,7 @@ async function run() {
         _actions_core__WEBPACK_IMPORTED_MODULE_0__.info('action logic');
     }
     catch (error) {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error instanceof Error ? error : error.toString());
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error instanceof Error ? error : `${error}`);
         throw error;
     }
 }
