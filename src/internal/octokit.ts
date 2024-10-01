@@ -4,6 +4,7 @@ import { Octokit as OctokitCore } from '@octokit/core'
 import { requestLog } from '@octokit/plugin-request-log'
 import { retry } from '@octokit/plugin-retry'
 import { throttling } from '@octokit/plugin-throttling'
+import * as logging from 'console-log-level'
 
 const OctokitWithPlugins = GitHub
     .plugin(retry)
@@ -50,7 +51,7 @@ export function newOctokitInstance(token: string) {
     }
 
     const logOptions: { log?: OctokitCore['log'] } = {}
-    const traceLogging = require('console-log-level')({ level: 'trace' })
+    const traceLogging = logging({ level: 'trace' })
     if (core.isDebug()) {
         logOptions.log = traceLogging
     }
