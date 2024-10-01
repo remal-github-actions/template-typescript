@@ -1,5 +1,7 @@
 name: Cancel PR actions on merge
 
+#1
+
 on:
   pull_request: {}
     #types:
