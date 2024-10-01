@@ -26,4 +26,4 @@ jobs:
             repo : context.payload.repository.name,
             ref: context.payload.pull_request.head.sha,
           })).data.check_runs
-          core.info(JSON..stringify(checkRuns))
+          core.info(JSON.stringify(checkRuns))
