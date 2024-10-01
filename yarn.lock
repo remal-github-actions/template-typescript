@@ -1515,10 +1515,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.0.0":
-  version: 20.0.0
-  resolution: "@types/node@npm:20.0.0"
-  checksum: 10c0/34d67327d4145b406c0eff4f4b76a1d38a5ace393918381db0991e24ed0cc084450eb3341a80fca074e3eed1c4ae445e92749fd475026a16f14d2305871c280d
+"@types/node@npm:20.16.10":
+  version: 20.16.10
+  resolution: "@types/node@npm:20.16.10"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/c0c0c7ecb083ec638c2118e54b5242bb4c39a75608cbac9475cf15aaceb64b8bc997a87a0798e700a81d61651c8a7750ae0455be0f0996ada6e8b2bb818d90c5
   languageName: node
   linkType: hard
 
@@ -7465,7 +7467,7 @@ __metadata:
     "@octokit/plugin-throttling": "npm:8.2.0"
     "@tsconfig/node20": "npm:1.0.0"
     "@types/jest": "npm:29.5.13"
-    "@types/node": "npm:20.0.0"
+    "@types/node": "npm:20.16.10"
     "@types/semver": "npm:7.5.8"
     "@typescript-eslint/eslint-plugin": "npm:7.18.0"
     "@typescript-eslint/parser": "npm:7.18.0"
@@ -7784,6 +7786,13 @@ __metadata:
     has-symbols: "npm:^1.0.3"
     which-boxed-primitive: "npm:^1.0.2"
   checksum: 10c0/81ca2e81134167cc8f75fa79fbcc8a94379d6c61de67090986a2273850989dd3bae8440c163121b77434b68263e34787a675cbdcb34bb2f764c6b9c843a11b66
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
   languageName: node
   linkType: hard
 
