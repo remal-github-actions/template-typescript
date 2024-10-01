@@ -1,6 +1,6 @@
 name: Cancel PR actions on merge
 
-#1
+#2
 
 on:
   pull_request: {}
