@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import { context } from '@actions/github'
 import { newOctokitInstance } from './internal/octokit'
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -11,7 +12,10 @@ const octokit = newOctokitInstance(githubToken)
 async function run(): Promise<void> {
     try {
         // action logic:
-        const repositoryInfo = await octokit.repos.get()
+        const repositoryInfo = await octokit.repos.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+        })
         core.info(JSON.stringify(repositoryInfo, null, 2))
 
     } catch (error) {
