@@ -5,7 +5,7 @@ const encoding = 'utf8'
 const nodeVersionString = process.argv[2]
 const nodeVersion = parseInt(nodeVersionString)
 if (isNaN(nodeVersion)) {
-    throw new Error(`Node.js major version should be passed as a script parameter: ${nodeVersionString}`)
+    throw new Error(`Node.js major version must be passed as a script parameter: ${nodeVersionString}`)
 }
 
 function readJsonFile(path) {
