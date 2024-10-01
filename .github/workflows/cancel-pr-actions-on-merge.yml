@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   cancel-pr-actions-on-merge:
-    if: ${{ github.event.pull_request.merged }}
+    #if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
