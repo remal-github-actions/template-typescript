@@ -58,7 +58,7 @@ transformations:
   - .github/workflows/codespell.yml
   script: |
     return content
-      .replace(/((\n[ ]+)check_hidden: '[^']*')/, "$1$2skip: './dist/**,./.yarn/**'")
+      .replace(/((\n[ ]+)check_hidden: '[^']*')/, "$1$2skip: './.git/**,./build/**,./dist/**,./.yarn/**,./.node_modules/**,./coverage/**'")
 - name: Renovate
   format: text
   includes:
