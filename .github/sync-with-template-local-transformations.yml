@@ -33,7 +33,8 @@ transformations:
             '/build',
             '/coverage',
             '/dist',
-            '!/dist/index.js',
+            '!/dist/*.js',
+            '!/dist/*.json',
             '',
         ].join('\n')
 - name: .github/sync-with-template.yml
