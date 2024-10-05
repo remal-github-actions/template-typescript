@@ -32,9 +32,9 @@ transformations:
             '!/.yarn/versions/',
             '/build',
             '/coverage',
-            '/dist',
-            '!/dist/*.js',
-            '!/dist/*.json',
+            '/dist/*',
+            '!/dist/index.js',
+            '!/dist/package.json',
             '',
         ].join('\n')
 - name: .github/sync-with-template.yml
