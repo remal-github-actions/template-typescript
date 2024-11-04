@@ -37803,6 +37803,7 @@ function newOctokitInstance(token) {
     const client = {
         ...octokit.rest,
         paginate: octokit.paginate,
+        graphql: octokit.graphql,
     };
     return client;
 }
