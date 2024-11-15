@@ -44,6 +44,7 @@ transformations:
   includes:
   - .github/sync-with-template.yml
   script: |
+    content.includes = content.includes ?? []
     ;[
       '.yarn/**',
       'check-dependency-engines.*js',
@@ -52,6 +53,15 @@ transformations:
     ].forEach(path => {
       if (!content.includes.includes(path)) {
         content.includes.push(path)
+      }
+    })
+    content.excludes = content.excludes ?? []
+    ;[
+      '.github/workflows/release-drafter.yml',
+      '.github/release-drafter.yml',
+    ].forEach(path => {
+      if (!content.excludes.includes(path)) {
+        content.excludes.push(path)
       }
     })
     return content
