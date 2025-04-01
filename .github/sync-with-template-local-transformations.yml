@@ -25,6 +25,7 @@ transformations:
         + [
             '',
             '# Remal GitHub actions:',
+            '/.corepack.env',
             '/.pnp.*',
             '/.yarn/*',
             '!/.yarn/patches/',
