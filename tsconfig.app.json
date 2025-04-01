@@ -10,6 +10,7 @@
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "removeComments": true,
+    "isolatedModules": true,
     "types": [
       "node"
     ]
