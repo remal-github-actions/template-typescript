@@ -25,7 +25,6 @@ transformations:
         + [
             '',
             '# Remal GitHub actions:',
-            '/.corepack.env',
             '/.pnp.*',
             '/.yarn/*',
             '!/.yarn/patches/',
@@ -47,6 +46,7 @@ transformations:
   script: |
     content.includes = content.includes ?? []
     ;[
+      '.corepack.env',
       '.yarn/**',
       'check-dependency-engines.*js',
       'update-node-version-in-files.*js',
