@@ -41,7 +41,7 @@ jobs:
           const members = (await github.paginate(github.rest.orgs.listMembers, {
             org: context.repo.owner,
           })).filter(it => it.type === 'User').map(it => it.login)
-          if (members.contains(defaultAssignee)) {
+          if (members.includes(defaultAssignee)) {
             core.setOutput('assignee', defaultAssignee)
             return
           }
