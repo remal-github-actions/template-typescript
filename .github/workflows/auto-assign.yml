@@ -38,9 +38,9 @@ jobs:
           }
 
           const defaultAssignee = '${{env.DEFAULT_ASSIGNEE}}'
-          const members = await github.paginate(github.rest.orgs.listMembers, {
+          const members = (await github.paginate(github.rest.orgs.listMembers, {
             org: context.repo.owner,
-          }).filter(it => it.type === 'User').map(it => it.login)
+          })).filter(it => it.type === 'User').map(it => it.login)
           if (members.contains(defaultAssignee)) {
             core.setOutput('assignee', defaultAssignee)
             return
