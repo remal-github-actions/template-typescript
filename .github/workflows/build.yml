@@ -123,8 +123,8 @@ jobs:
       id: current
       uses: ./
       with:
-        githubToken: ${{github.token}}
         dryRun: 'true'
+        githubToken: ${{github.token}}
 
     # $$$sync-with-template-modifiable-end$$$
 
