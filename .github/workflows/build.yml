@@ -135,7 +135,7 @@ jobs:
     - name: Push back
       if: ${{github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')}}
       run: |
-        git add --all
+        git add --all || exit 1
         git commit -m '[push-back] Push-back updated files during build' || echo "No changes to commit" && exit 0
         git push origin HEAD:${GITHUB_REF}
 
