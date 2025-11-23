@@ -6,9 +6,6 @@ on:
     - main
   pull_request: { }
 
-permissions:
-  contents: write
-
 defaults:
   run:
     shell: bash
@@ -29,6 +26,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v6
       with:
+        token: ${{secrets.PUSH_BACK_TOKEN}}
         submodules: recursive
         lfs: true
         fetch-depth: 1
