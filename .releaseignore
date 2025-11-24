@@ -1,5 +1,7 @@
 *
 !.gitattributes
+!.gitignore
 !.editorconfig
+!LICENSE
 !action.yml
 !dist

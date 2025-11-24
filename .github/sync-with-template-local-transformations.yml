@@ -48,6 +48,7 @@ transformations:
       'check-dependency-engines.*js',
       'update-node-version-in-files.*js',
       'tsconfig-generate-app.*js',
+      '.releaseignore',
     ].forEach(path => {
       if (!content.includes.includes(path)) {
         content.includes.push(path)
