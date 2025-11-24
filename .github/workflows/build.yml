@@ -170,11 +170,14 @@ jobs:
 
           patternsToIgnore = `!.git\n!.git/**\n${patternsToIgnore}`
 
+          const gitDirPath = path.resolve(cwdPath, '.git')
+
           const globber = await glob.create(patternsToIgnore)
           const files = await globber.glob()
           files
             .map(file => path.resolve(cwdPath, file))
             .filter(file => file != cwdPath)
+            .filter(file => file != gitDirPath && !file.startsWith(gitDirPath + path.sep))
             .forEach(file => {
               core.debug(`Removing: ${file}`)
               fs.rmSync(file, { recursive: true, force: true })
