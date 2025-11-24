@@ -156,7 +156,7 @@ jobs:
 
           const patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
             .split('\n')
-            .map(line => line.replaceFirst(/#.*/, '').trim())
+            .map(line => line.replace(/#.*/, '').trim())
             .filter(line => line.length)
             .join('\n')
           if (!patternsToIgnore.length) {
