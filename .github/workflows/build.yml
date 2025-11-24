@@ -154,7 +154,7 @@ jobs:
             return
           }
 
-          const patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
+          let patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
             .split('\n')
             .map(line => line.replace(/#.*/, '').trim())
             .filter(line => line.length)
@@ -163,6 +163,8 @@ jobs:
             core.info(`${releaseIgnorePath} file does not have patterns. Skipping removal of files.`)
             return
           }
+
+          patternsToIgnore = `!.git\n${patternsToIgnore}`
 
           const globber = await glob.create(patternsToIgnore)
           const files = await globber.glob()
