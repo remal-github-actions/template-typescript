@@ -150,26 +150,19 @@ jobs:
 
           const releaseIgnorePath = '.releaseignore'
           if (!fs.existsSync(releaseIgnorePath)) {
-            core.warning('.releaseignore file does not exist. Skipping removal of files.')
+            core.warning(`${releaseIgnorePath} file does not exist. Skipping removal of files.`)
             return
           }
 
           const patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
             .split('\n')
-            .map(line => line.replaceFirst('#.*', '').trim())
+            .map(line => line.replaceFirst(/#.*/, '').trim())
             .filter(line => line.length)
             .join('\n')
           if (!patternsToIgnore.length) {
-            core.info('.releaseignore doesn't have any patterns. Skipping removal of files.')
+            core.info(`${releaseIgnorePath} file does not have patterns. Skipping removal of files.`)
             return
           }
-
-          const globber = await glob.create(patternsToIgnore)
-          const files = await globber.glob()
-          files.forEach(file => {
-            core.info(`Removing file: ${file}`)
-            //fs.rmSync(file, { recursive: true, force: true })
-          })
 
     - name: Prepare release commit
       if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
