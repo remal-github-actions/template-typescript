@@ -142,6 +142,44 @@ jobs:
       if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
       uses: remal-github-actions/read-nodejs-package-version@v1
 
+    - name: Remove files listed in .releaseignore
+      uses: actions/github-script@v8
+      with:
+        script: |
+          const fs = require('fs')
+
+          const releaseIgnorePath = '.releaseignore'
+          if (!fs.existsSync(releaseIgnorePath)) {
+            core.warning('.releaseignore file does not exist. Skipping removal of files.')
+            return
+          }
+
+          const patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
+            .split('\n')
+            .map(line => line.replaceFirst('#.*', '').trim())
+            .filter(line => line.length)
+            .join('\n')
+          if (!patternsToIgnore.length) {
+            core.info('.releaseignore doesn't have any patterns. Skipping removal of files.')
+            return
+          }
+
+          const globber = await glob.create(patternsToIgnore)
+          const files = await globber.glob()
+          files.forEach(file => {
+            core.info(`Removing file: ${file}`)
+            //fs.rmSync(file, { recursive: true, force: true })
+          })
+
+    - name: Prepare release commit
+      if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+      run: |
+        RELEASE_BRANCH="release/v${{steps.readVersion.outputs.majorVersion}}"
+        git switch --force-create "$RELEASE_BRANCH"
+        git add --all
+        git commit -m "[skip-ci] Release v${{steps.readVersion.outputs.majorVersion}}"
+        git push --force origin "$RELEASE_BRANCH"
+
     - name: Create tag
       uses: remal-github-actions/create-tag@v2
       with:
