@@ -168,7 +168,7 @@ jobs:
             return
           }
 
-          patternsToIgnore = `!.git\n!.git/**\n${patternsToIgnore}`
+          const gitDirPath = path.resolve(cwdPath, '.git')
 
           const globber = await glob.create(patternsToIgnore)
           const files = await globber.glob()
