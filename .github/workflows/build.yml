@@ -156,7 +156,7 @@ jobs:
           const releaseIgnorePath = '.releaseignore'
           const releaseIgnoreFullPath = path.resolve(cwdPath, releaseIgnorePath)
           if (!fs.existsSync(releaseIgnoreFullPath)) {
-            core.warning(`${releaseIgnorePath} file does not exist. Skipping removal of files.`)
+            core.info(`${releaseIgnorePath} file does not exist, skipping removal of files.`)
             core.setOutput('skipped', 'true')
             return
           }
@@ -167,7 +167,7 @@ jobs:
             .filter(line => line.length)
             .join('\n')
           if (!patternsToIgnore.length) {
-            core.info(`${releaseIgnorePath} file does not have patterns. Skipping removal of files.`)
+            core.info(`${releaseIgnorePath} file does not have patterns, skipping removal of files.`)
             core.setOutput('skipped', 'true')
             return
           }
