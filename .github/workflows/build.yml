@@ -170,7 +170,7 @@ jobs:
         RELEASE_BRANCH="release/v${{steps.readVersion.outputs.majorVersion}}"
         git switch --force-create "$RELEASE_BRANCH"
         git add --all
-        git commit -m "[skip-ci] Release v${{steps.readVersion.outputs.majorVersion}}"
+        git commit -m "[skip-ci] Release v${{steps.readVersion.outputs.majorVersion}}" || true
         git push --force origin "$RELEASE_BRANCH"
 
     - name: Create tag
