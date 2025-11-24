@@ -147,14 +147,18 @@ jobs:
       with:
         script: |
           const fs = require('fs')
+          const path = require('path')
+
+          const cwdPath = path.resolve(process.cwd())
 
           const releaseIgnorePath = '.releaseignore'
-          if (!fs.existsSync(releaseIgnorePath)) {
+          const releaseIgnoreFullPath = path.resolve(cwdPath, releaseIgnorePath)
+          if (!fs.existsSync(releaseIgnoreFullPath)) {
             core.warning(`${releaseIgnorePath} file does not exist. Skipping removal of files.`)
             return
           }
 
-          let patternsToIgnore = fs.readFileSync(releaseIgnorePath, 'utf-8')
+          let patternsToIgnore = fs.readFileSync(releaseIgnoreFullPath, 'utf-8')
             .split('\n')
             .map(line => line.replace(/#.*/, '').trim())
             .filter(line => line.length)
@@ -164,14 +168,17 @@ jobs:
             return
           }
 
-          patternsToIgnore = `!.git\n${patternsToIgnore}`
+          patternsToIgnore = `!.git/**\n${patternsToIgnore}`
 
           const globber = await glob.create(patternsToIgnore)
           const files = await globber.glob()
-          files.forEach(file => {
-            core.debug(`Removing: ${file}`)
-            fs.rmSync(file, { recursive: true, force: true })
-          })
+          files
+            .map(file => path.resolve(cwdPath, file))
+            .filter(file => file != cwdPath)
+            .forEach(file => {
+              core.debug(`Removing: ${file}`)
+              fs.rmSync(file, { recursive: true, force: true })
+            })
 
     - name: Prepare release commit
       if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
