@@ -64,16 +64,6 @@ transformations:
       }
     })
     return content
-- name: .github/sync-with-template-delete.list
-  format: text
-  includes:
-  - .github/sync-with-template-delete.list
-  script: |
-    return content
-        + [
-            '.github/workflows/release-drafter.yml',
-            '',
-        ].join('\n')
 - name: .github/workflows/codespell.yml
   format: text
   includes:
