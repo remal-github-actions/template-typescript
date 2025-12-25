@@ -101,9 +101,7 @@ transformations:
         {
           matchCategories: ["js"],
           matchPackageNames: ["@tsconfig/node**"],
-          replacement: {
-            enabled: false,
-          },
+          extends: ["github>remal/renovate-config:disable-replacements"],
         },
         {
           matchCategories: ["js"],
