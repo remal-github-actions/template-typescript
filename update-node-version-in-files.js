@@ -60,7 +60,7 @@ function writeJsonFile(path, json) {
         Object.entries(dependencies).forEach(([dependency, version]) => {
             if (dependency === '@types/node' && !version.startsWith(`${nodeVersion}.`)) {
                 const newVersion = `${nodeVersion}.0.0`
-                console.log(`Setting version of ${dependency} to ${newVersion}`)
+                console.log(`Setting version of ${dependency} dependency to ${newVersion}`)
                 dependencies[dependency] = newVersion
             }
         })
