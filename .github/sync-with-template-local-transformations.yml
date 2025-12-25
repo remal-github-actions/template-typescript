@@ -90,18 +90,20 @@ transformations:
 
       packageRules: [
         {
-          "matchCategories": ["node"],
-          "enabled": false
+          matchCategories: ["node"],
+          enabled: false,
         },
         {
           matchCategories: ["js"],
-          matchPackageNames: ['@types/node'],
+          matchPackageNames: ["@types/node"],
           extends: ["github>remal/renovate-config:disable-major-updates"],
         },
         {
           matchCategories: ["js"],
-          matchPackageNames: ['@tsconfig/node22'],
-          extends: ["github>remal/renovate-config:disable-major-updates"],
+          matchPackageNames: ["@tsconfig/node**"],
+          replacement: {
+            enabled: false,
+          },
         },
         {
           matchCategories: ["js"],
