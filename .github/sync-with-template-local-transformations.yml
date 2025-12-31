@@ -94,9 +94,8 @@ transformations:
           enabled: false,
         },
         {
-          matchCategories: ["js"],
           matchPackageNames: ["@types/node", "@tsconfig/node**"],
-          // tmatchUpdateTypes: ["major", "replacement"],
+          matchUpdateTypes: ["major", "replacement"],
           enabled: false,
         },
         {
