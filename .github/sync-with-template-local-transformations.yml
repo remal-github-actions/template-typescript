@@ -96,7 +96,7 @@ transformations:
         {
           matchCategories: ["js"],
           matchPackageNames: ["@types/node", "@tsconfig/node**"],
-          ///matchUpdateTypes: ["major", "replacement"],
+          // tmatchUpdateTypes: ["major", "replacement"],
           enabled: false,
         },
         {
