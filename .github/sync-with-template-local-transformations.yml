@@ -95,7 +95,7 @@ transformations:
         },
         {
           matchCategories: ["js"],
-          matchPackageNames: ["@types/node", "/@tsconfig\\/node\\d*/"],
+          matchPackageNames: ["@types/node", "@tsconfig/node**"],
           matchUpdateTypes: ["major", "replacement"],
           enabled: false,
         },
