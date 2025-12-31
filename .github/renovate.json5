@@ -25,7 +25,7 @@
     },
     {
       matchCategories: ["js"],
-      matchPackageNames: ["@types/node", "@tsconfig/node**"],
+      matchPackageNames: ["@types/node", "/@tsconfig\\/node\\d*/"],
       matchUpdateTypes: ["major", "replacement"],
       enabled: false,
     },
