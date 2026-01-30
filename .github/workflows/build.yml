@@ -33,11 +33,6 @@ jobs:
         scopes: |
           contents: write
           workflows: write
-    - name: Inspect GitHub App token permissions
-      run: |
-        curl -H "Authorization: Bearer ${{steps.get-token.outputs.token}}" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/app
 
     - name: Checkout repository
       uses: actions/checkout@v6
