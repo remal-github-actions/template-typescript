@@ -144,8 +144,6 @@ jobs:
     - name: Push back
       if: ${{github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')}}
       uses: remal-github-actions/push-back@v2
-      env:
-        GITHUB_TOKEN: ${{steps.get-token.outputs.token}}
       with:
         message: '[push-back] Push-back updated files during build'
 
