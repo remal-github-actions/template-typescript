@@ -90,7 +90,13 @@ transformations:
 
       packageRules: [
         {
-          matchCategories: ["node", "asdf"],
+          matchCategories: ["node"],
+          matchUpdateTypes: ["major", "replacement"],
+          enabled: false,
+        },
+        {
+          matchManagers: ["asdf"],
+          matchPackageNames: ["nodejs"],
           matchUpdateTypes: ["major", "replacement"],
           enabled: false,
         },
