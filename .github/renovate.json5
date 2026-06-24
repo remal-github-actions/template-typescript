@@ -21,6 +21,7 @@
   packageRules: [
     {
       matchCategories: ["node", "asdf"],
+      matchUpdateTypes: ["major", "replacement"],
       enabled: false,
     },
     {
