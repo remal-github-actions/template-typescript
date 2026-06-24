@@ -90,7 +90,7 @@ transformations:
 
       packageRules: [
         {
-          matchCategories: ["node"],
+          matchCategories: ["node", "asdf"],
           enabled: false,
         },
         {
