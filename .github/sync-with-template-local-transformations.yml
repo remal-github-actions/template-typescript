@@ -96,7 +96,7 @@ transformations:
         },
         {
           matchManagers: ["asdf"],
-          matchPackageNames: ["nodejs"],
+          matchPackageNames: ["node", "nodejs"],
           matchUpdateTypes: ["major", "replacement"],
           enabled: false,
         },
