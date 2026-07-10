@@ -53,7 +53,7 @@ jobs:
         fi
         VERSION=${USING:4}
         echo "Action's Node.js version: $VERSION"
-        echo "result=$VERSION" | tee -a $GITHUB_OUTPUT
+        echo "result=$VERSION" | tee -a "$GITHUB_OUTPUT"
 
     - name: Setup Node.js ${{steps.read-node-version.outputs.result}}
       uses: actions/setup-node@v6
@@ -74,19 +74,19 @@ jobs:
           echo "::error::package.json: unsupported .packageManager format: '$PACKAGE_MANAGER'"
           exit 1
         fi
-        echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" | tee -a $GITHUB_ENV
-        echo "result=$PACKAGE_MANAGER" | tee -a $GITHUB_OUTPUT
+        echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" | tee -a "$GITHUB_ENV"
+        echo "result=$PACKAGE_MANAGER" | tee -a "$GITHUB_OUTPUT"
         PACKAGE_MANAGER_NAME=${PACKAGE_MANAGER^}
-        echo "name=$PACKAGE_MANAGER_NAME" | tee -a $GITHUB_OUTPUT
+        echo "name=$PACKAGE_MANAGER_NAME" | tee -a "$GITHUB_OUTPUT"
 
     - name: Create cache params
       id: cache-params
       run: |
-        echo "key=${{runner.os}}-dependencies-${{steps.read-node-version.outputs.result}}-${{hashFiles('package.json', 'pnpm-*.yml', '.yarnrc.yml', 'yarn.lock' , '.pnp.*', '.yarn/patches/**', '.yarn/plugins/**', '.yarn/releases/**', '.yarn/versions/**')}}" | tee -a $GITHUB_OUTPUT
-        echo "paths<<EOF" | tee -a $GITHUB_OUTPUT
-        echo "node_modules" | tee -a $GITHUB_OUTPUT
-        echo ".yarn/cache" | tee -a $GITHUB_OUTPUT
-        echo "EOF" | tee -a $GITHUB_OUTPUT
+        echo "key=${{runner.os}}-dependencies-${{steps.read-node-version.outputs.result}}-${{hashFiles('package.json', 'pnpm-*.yml', '.yarnrc.yml', 'yarn.lock' , '.pnp.*', '.yarn/patches/**', '.yarn/plugins/**', '.yarn/releases/**', '.yarn/versions/**')}}" | tee -a "$GITHUB_OUTPUT"
+        echo "paths<<EOF" | tee -a "$GITHUB_OUTPUT"
+        echo "node_modules" | tee -a "$GITHUB_OUTPUT"
+        echo ".yarn/cache" | tee -a "$GITHUB_OUTPUT"
+        echo "EOF" | tee -a "$GITHUB_OUTPUT"
 
     - name: Restore dependencies cache
       id: restore-dependencies-cache
