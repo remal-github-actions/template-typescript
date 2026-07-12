@@ -36,9 +36,11 @@ runs:
     id: cache-params
     shell: bash
     env:
-      CACHE_KEY: ${{runner.os}}-dependencies-${{inputs.nodeVersion}}-${{hashFiles('package.json', 'pnpm-*.yml', '.yarnrc.yml', 'yarn.lock' , '.pnp.*', '.yarn/patches/**', '.yarn/plugins/**', '.yarn/releases/**', '.yarn/versions/**')}}
+      CACHE_KEY_PREFIX: ${{runner.os}}-dependencies-${{inputs.nodeVersion}}-${{steps.package-manager.outputs.result}}-
+      CACHE_KEY_HASH: ${{hashFiles('package.json', 'pnpm-*.yml', '.yarnrc.yml', 'yarn.lock' , '.pnp.*', '.yarn/patches/**', '.yarn/plugins/**', '.yarn/releases/**', '.yarn/versions/**')}}
     run: |
-      echo "key=$CACHE_KEY" | tee -a "$GITHUB_OUTPUT"
+      echo "key-prefix=$CACHE_KEY_PREFIX" | tee -a "$GITHUB_OUTPUT"
+      echo "key=${CACHE_KEY_PREFIX}${CACHE_KEY_HASH}" | tee -a "$GITHUB_OUTPUT"
       echo "paths<<EOF" | tee -a "$GITHUB_OUTPUT"
       echo "node_modules" | tee -a "$GITHUB_OUTPUT"
       echo ".yarn/cache" | tee -a "$GITHUB_OUTPUT"
@@ -49,7 +51,7 @@ runs:
     uses: actions/cache/restore@v6
     with:
       key: ${{steps.cache-params.outputs.key}}
-      restore-keys: ${{runner.os}}-dependencies-${{inputs.nodeVersion}}-
+      restore-keys: ${{steps.cache-params.outputs.key-prefix}}
       path: ${{steps.cache-params.outputs.paths}}
 
   - name: Install dependencies
