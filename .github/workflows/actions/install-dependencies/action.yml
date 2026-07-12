@@ -64,7 +64,7 @@ runs:
       fi
 
   - name: Save dependencies cache
-    if: ${{steps.restore-dependencies-cache.outputs.cache-hit != 'true'}}
+    if: ${{github.ref == 'refs/heads/main' && steps.restore-dependencies-cache.outputs.cache-hit != 'true'}}
     uses: actions/cache/save@v6
     with:
       key: ${{steps.cache-params.outputs.key}}
